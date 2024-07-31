@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lego Collection</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1">
+
+  <%- include('partials/navbar',{page: ''}) %>
+
+  <div class="container mx-auto p-4">
+
+        <div class="hero bg-base-200 rounded-lg p-6">
+          <div class="hero-content text-center ">
+            <div class="max-w-md">
+              <h1 class="text-5xl font-bold"><%= set.name %></h1>
+  
+              <p class="py-6">Use the below form to add a new Lego Set to the collection</p>
+  
+            </div>
+          </div>
+        </div>
+  
+        <br />
+  
+        <form action="/lego/editSet" method="post">
+  
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-0">
+            <div>
+              <div class="mb-6">
+                <label for="name" class="block text-gray-700 font-medium">Name</label>
+                <input type="text" id="name" name="name" required
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300" value="<%= set.name %>">
+              </div>
+              <div class="mb-6">
+                <label for="year" class="block text-gray-700 font-medium">Year</label>
+                <input type="number" id="year" name="year" required
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300" value="<%= set.year %>">
+              </div>
+            </div>
+            <div>
+  
+              <div class="mb-6">
+                <label for="num_parts" class="block text-gray-700 font-medium">Number of Parts</label>
+                <input type="number" id="num_parts" name="num_parts"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300" value="<%= set.num_parts %>">
+              </div>
+              <div class="mb-6">
+                <label for="img_url" class="block text-gray-700 font-medium">Image URL</label>
+                <input type="url" id="img_url" name="img_url" required
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300" value="<%= set.img_url %>">
+              </div>
+            </div>
+  
+            <div>
+              <div class="mb-6">
+                <label for="theme_id" class="block text-gray-700 font-medium">Theme</label>
+                <select id="theme_id" name="theme_id" required
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+                  
+                  <% themes.forEach(theme=>{ %>
+                    <option <%= (set.theme_id == theme.id) ? "selected" : "" %> value="<%= theme.id %>">
+                      <%= theme.name %>
+                    </option>
+                  <% }) %>
+                  
+                    <option value="1">
+                      Technic
+                    </option>
+                  
+                    <option value="3">
+                      Competition
+                    </option>
+                  
+                    <option value="4">
+                      Expert Builder
+                    </option>
+                  
+                    <option value="16">
+                      RoboRiders
+                    </option>
+                  
+                    <option value="17">
+                      Speed Slammers
+                    </option>
+                  
+                    <option value="18">
+                      Star Wars
+                    </option>
+                  
+                    <option value="19">
+                      Supplemental
+                    </option>
+                  
+                    <option value="20">
+                      Throwbot Slizer
+                    </option>
+                  
+                    <option value="21">
+                      Universal Building Set
+                    </option>
+                  
+                    <option value="22">
+                      Creator
+                    </option>
+                  
+                    <option value="23">
+                      Basic Model
+                    </option>
+                  
+                    <option value="34">
+                      Make &amp; Create
+                    </option>
+                  
+                    <option value="35">
+                      Bricks &amp; More
+                    </option>
+                  
+                    <option value="50">
+                      Town
+                    </option>
+                  
+                    <option value="51">
+                      Arctic
+                    </option>
+                  
+                    <option value="52">
+                      City
+                    </option>
+                  
+                    <option value="53">
+                      Airport
+                    </option>
+                  
+                    <option value="54">
+                      Cargo
+                    </option>
+                  
+                    <option value="55">
+                      Coast Guard
+                    </option>
+                  
+                    <option value="56">
+                      Construction
+                    </option>
+                  
+                    <option value="57">
+                      Farm
+                    </option>
+                  
+                    <option value="58">
+                      Fire
+                    </option>
+                  
+                    <option value="59">
+                      Harbor
+                    </option>
+                  
+                    <option value="60">
+                      Hospital
+                    </option>
+                  
+                    <option value="61">
+                      Police
+                    </option>
+                  
+                    <option value="63">
+                      Traffic
+                    </option>
+                  
+                    <option value="64">
+                      Off-Road
+                    </option>
+                  
+                    <option value="65">
+                      Arctic
+                    </option>
+                  
+                    <option value="66">
+                      Trains
+                    </option>
+                  
+                    <option value="67">
+                      Classic Town
+                    </option>
+                  
+                    <option value="86">
+                      Divers
+                    </option>
+                  
+                    <option value="87">
+                      Extreme Team
+                    </option>
+                  
+                    <option value="88">
+                      Launch Command
+                    </option>
+                  
+                    <option value="89">
+                      Outback
+                    </option>
+                  
+                    <option value="90">
+                      Paradisa
+                    </option>
+                  
+                    <option value="91">
+                      Race
+                    </option>
+                  
+                    <option value="92">
+                      Res-Q
+                    </option>
+                  
+                    <option value="93">
+                      Space Port
+                    </option>
+                  
+                    <option value="94">
+                      Town Jr.
+                    </option>
+                  
+                    <option value="104">
+                      Town Plan
+                    </option>
+                  
+                    <option value="105">
+                      World City
+                    </option>
+                  
+                    <option value="106">
+                      City Center
+                    </option>
+                  
+                    <option value="112">
+                      Racers
+                    </option>
+                  
+                    <option value="114">
+                      Ferrari
+                    </option>
+                  
+                    <option value="118">
+                      Speed Racer
+                    </option>
+                  
+                    <option value="122">
+                      Williams F1
+                    </option>
+                  
+                    <option value="123">
+                      World Racers
+                    </option>
+                  
+                    <option value="126">
+                      Space
+                    </option>
+                  
+                    <option value="127">
+                      Alien Conquest
+                    </option>
+                  
+                    <option value="128">
+                      Blacktron I
+                    </option>
+                  
+                    <option value="129">
+                      Blacktron II
+                    </option>
+                  
+                    <option value="130">
+                      Classic Space
+                    </option>
+                  
+                    <option value="131">
+                      Exploriens
+                    </option>
+                  
+                    <option value="132">
+                      Futuron
+                    </option>
+                  
+                    <option value="133">
+                      Ice Planet 2002
+                    </option>
+                  
+                    <option value="134">
+                      Insectoids
+                    </option>
+                  
+                    <option value="135">
+                      Life On Mars
+                    </option>
+                  
+                    <option value="136">
+                      M:Tron
+                    </option>
+                  
+                    <option value="137">
+                      Mars Mission
+                    </option>
+                  
+                    <option value="138">
+                      RoboForce
+                    </option>
+                  
+                    <option value="139">
+                      Space Police I
+                    </option>
+                  
+                    <option value="140">
+                      Space Police II
+                    </option>
+                  
+                    <option value="141">
+                      Space Police III
+                    </option>
+                  
+                    <option value="142">
+                      Spyrius
+                    </option>
+                  
+                    <option value="143">
+                      Supplemental
+                    </option>
+                  
+                    <option value="144">
+                      UFO
+                    </option>
+                  
+                    <option value="145">
+                      Unitron
+                    </option>
+                  
+                    <option value="146">
+                      Galaxy Squad
+                    </option>
+                  
+                    <option value="147">
+                      Pirates
+                    </option>
+                  
+                    <option value="148">
+                      Pirates I
+                    </option>
+                  
+                    <option value="153">
+                      Pirates II
+                    </option>
+                  
+                    <option value="154">
+                      Pirates III
+                    </option>
+                  
+                    <option value="155">
+                      Modular Buildings
+                    </option>
+                  
+                    <option value="156">
+                      Mini
+                    </option>
+                  
+                    <option value="157">
+                      Bricktober
+                    </option>
+                  
+                    <option value="158">
+                      Star Wars
+                    </option>
+                  
+                    <option value="171">
+                      Ultimate Collector Series
+                    </option>
+                  
+                    <option value="186">
+                      Castle
+                    </option>
+                  
+                    <option value="187">
+                      Black Falcons
+                    </option>
+                  
+                    <option value="188">
+                      Black Knights
+                    </option>
+                  
+                    <option value="189">
+                      Classic Castle
+                    </option>
+                  
+                    <option value="190">
+                      Dragon Knights
+                    </option>
+                  
+                    <option value="191">
+                      Dark Forest
+                    </option>
+                  
+                    <option value="193">
+                      Fantasy Era
+                    </option>
+                  
+                    <option value="194">
+                      Forestmen
+                    </option>
+                  
+                    <option value="195">
+                      Fright Knights
+                    </option>
+                  
+                    <option value="196">
+                      Kingdoms
+                    </option>
+                  
+                    <option value="197">
+                      Knights Kingdom I
+                    </option>
+                  
+                    <option value="198">
+                      Knights Kingdom II
+                    </option>
+                  
+                    <option value="199">
+                      Lion Knights
+                    </option>
+                  
+                    <option value="201">
+                      Royal Knights
+                    </option>
+                  
+                    <option value="203">
+                      Wolfpack
+                    </option>
+                  
+                    <option value="204">
+                      Designer Sets
+                    </option>
+                  
+                    <option value="206">
+                      Seasonal
+                    </option>
+                  
+                    <option value="207">
+                      Advent
+                    </option>
+                  
+                    <option value="208">
+                      City
+                    </option>
+                  
+                    <option value="209">
+                      Star Wars
+                    </option>
+                  
+                    <option value="210">
+                      Belville
+                    </option>
+                  
+                    <option value="211">
+                      Castle
+                    </option>
+                  
+                    <option value="212">
+                      Classic Basic
+                    </option>
+                  
+                    <option value="213">
+                      Clikits
+                    </option>
+                  
+                    <option value="214">
+                      Creator
+                    </option>
+                  
+                    <option value="215">
+                      Pirates
+                    </option>
+                  
+                    <option value="216">
+                      Friends
+                    </option>
+                  
+                    <option value="227">
+                      Christmas
+                    </option>
+                  
+                    <option value="228">
+                      Creator
+                    </option>
+                  
+                    <option value="229">
+                      Easter
+                    </option>
+                  
+                    <option value="230">
+                      Halloween
+                    </option>
+                  
+                    <option value="231">
+                      Thanksgiving
+                    </option>
+                  
+                    <option value="232">
+                      Valentine
+                    </option>
+                  
+                    <option value="233">
+                      Train
+                    </option>
+                  
+                    <option value="234">
+                      12V
+                    </option>
+                  
+                    <option value="235">
+                      4.5V
+                    </option>
+                  
+                    <option value="236">
+                      9V
+                    </option>
+                  
+                    <option value="240">
+                      RC Train
+                    </option>
+                  
+                    <option value="241">
+                      Supplemental
+                    </option>
+                  
+                    <option value="246">
+                      Harry Potter
+                    </option>
+                  
+                    <option value="252">
+                      Architecture
+                    </option>
+                  
+                    <option value="253">
+                      Skylines
+                    </option>
+                  
+                    <option value="254">
+                      Bulk Bricks
+                    </option>
+                  
+                    <option value="255">
+                      Castle
+                    </option>
+                  
+                    <option value="256">
+                      Technic
+                    </option>
+                  
+                    <option value="257">
+                      Train
+                    </option>
+                  
+                    <option value="258">
+                      Mindstorms
+                    </option>
+                  
+                    <option value="259">
+                      NXT
+                    </option>
+                  
+                    <option value="260">
+                      RCX
+                    </option>
+                  
+                    <option value="261">
+                      Star Wars
+                    </option>
+                  
+                    <option value="262">
+                      EV3
+                    </option>
+                  
+                    <option value="263">
+                      Pirates of the Caribbean
+                    </option>
+                  
+                    <option value="264">
+                      Indiana Jones
+                    </option>
+                  
+                    <option value="269">
+                      Cars
+                    </option>
+                  
+                    <option value="270">
+                      Ben 10
+                    </option>
+                  
+                    <option value="271">
+                      Prince of Persia
+                    </option>
+                  
+                    <option value="272">
+                      SpongeBob SquarePants
+                    </option>
+                  
+                    <option value="273">
+                      Studios
+                    </option>
+                  
+                    <option value="274">
+                      Jurassic Park III
+                    </option>
+                  
+                    <option value="275">
+                      Toy Story
+                    </option>
+                  
+                    <option value="276">
+                      Sculptures
+                    </option>
+                  
+                    <option value="277">
+                      Mosaic
+                    </option>
+                  
+                    <option value="278">
+                      Model Team
+                    </option>
+                  
+                    <option value="279">
+                      4 Juniors
+                    </option>
+                  
+                    <option value="280">
+                      Jack Stone
+                    </option>
+                  
+                    <option value="287">
+                      Spider-Man
+                    </option>
+                  
+                    <option value="296">
+                      Adventurers
+                    </option>
+                  
+                    <option value="297">
+                      Desert
+                    </option>
+                  
+                    <option value="298">
+                      Dino Island
+                    </option>
+                  
+                    <option value="299">
+                      Jungle
+                    </option>
+                  
+                    <option value="300">
+                      Orient Expedition
+                    </option>
+                  
+                    <option value="301">
+                      Other
+                    </option>
+                  
+                    <option value="302">
+                      Agents
+                    </option>
+                  
+                    <option value="303">
+                      Ultra Agents
+                    </option>
+                  
+                    <option value="304">
+                      Alpha Team
+                    </option>
+                  
+                    <option value="305">
+                      Mission Deep Sea
+                    </option>
+                  
+                    <option value="306">
+                      Mission Deep Freeze
+                    </option>
+                  
+                    <option value="307">
+                      Aquazone
+                    </option>
+                  
+                    <option value="308">
+                      Aquanauts
+                    </option>
+                  
+                    <option value="309">
+                      Aquaraiders I
+                    </option>
+                  
+                    <option value="310">
+                      Aquaraiders II
+                    </option>
+                  
+                    <option value="311">
+                      Aquasharks
+                    </option>
+                  
+                    <option value="312">
+                      Hydronauts
+                    </option>
+                  
+                    <option value="313">
+                      Stingrays
+                    </option>
+                  
+                    <option value="315">
+                      Atlantis
+                    </option>
+                  
+                    <option value="317">
+                      Avatar: The Last Airbender
+                    </option>
+                  
+                    <option value="318">
+                      Belville
+                    </option>
+                  
+                    <option value="324">
+                      Bionicle
+                    </option>
+                  
+                    <option value="341">
+                      Playsets
+                    </option>
+                  
+                    <option value="360">
+                      Protectors
+                    </option>
+                  
+                    <option value="363">
+                      Boat
+                    </option>
+                  
+                    <option value="364">
+                      Building Set with People
+                    </option>
+                  
+                    <option value="365">
+                      System
+                    </option>
+                  
+                    <option value="366">
+                      Basic Set
+                    </option>
+                  
+                    <option value="367">
+                      Building
+                    </option>
+                  
+                    <option value="368">
+                      HO 1:87 Vehicles
+                    </option>
+                  
+                    <option value="369">
+                      Jumbo Bricks
+                    </option>
+                  
+                    <option value="371">
+                      Supplemental
+                    </option>
+                  
+                    <option value="372">
+                      Town Plan
+                    </option>
+                  
+                    <option value="373">
+                      Vehicle
+                    </option>
+                  
+                    <option value="384">
+                      Dino 2010
+                    </option>
+                  
+                    <option value="385">
+                      Dino Attack
+                    </option>
+                  
+                    <option value="386">
+                      Dinosaurs
+                    </option>
+                  
+                    <option value="387">
+                      Discovery
+                    </option>
+                  
+                    <option value="388">
+                      Disney&#39;s Mickey Mouse
+                    </option>
+                  
+                    <option value="389">
+                      Exo-Force
+                    </option>
+                  
+                    <option value="390">
+                      Fabuland
+                    </option>
+                  
+                    <option value="397">
+                      Factory
+                    </option>
+                  
+                    <option value="398">
+                      FIRST LEGO League
+                    </option>
+                  
+                    <option value="399">
+                      Freestyle
+                    </option>
+                  
+                    <option value="400">
+                      Hero Factory
+                    </option>
+                  
+                    <option value="401">
+                      Heroes
+                    </option>
+                  
+                    <option value="403">
+                      Villains
+                    </option>
+                  
+                    <option value="404">
+                      Hobby Sets
+                    </option>
+                  
+                    <option value="405">
+                      Homemaker
+                    </option>
+                  
+                    <option value="406">
+                      Inventor
+                    </option>
+                  
+                    <option value="407">
+                      Island Xtreme Stunts
+                    </option>
+                  
+                    <option value="408">
+                      LEGO Brand Store
+                    </option>
+                  
+                    <option value="409">
+                      Monthly Mini Model Build
+                    </option>
+                  
+                    <option value="410">
+                      Pick A Model
+                    </option>
+                  
+                    <option value="411">
+                      Legoland
+                    </option>
+                  
+                    <option value="412">
+                      Airport
+                    </option>
+                  
+                    <option value="413">
+                      Building
+                    </option>
+                  
+                    <option value="414">
+                      Castle
+                    </option>
+                  
+                    <option value="415">
+                      Coast Guard
+                    </option>
+                  
+                    <option value="416">
+                      Construction
+                    </option>
+                  
+                    <option value="417">
+                      Fire
+                    </option>
+                  
+                    <option value="418">
+                      Gas Station
+                    </option>
+                  
+                    <option value="419">
+                      Harbor
+                    </option>
+                  
+                    <option value="420">
+                      Hospital
+                    </option>
+                  
+                    <option value="421">
+                      Police
+                    </option>
+                  
+                    <option value="422">
+                      Space
+                    </option>
+                  
+                    <option value="423">
+                      Vehicle
+                    </option>
+                  
+                    <option value="424">
+                      Western
+                    </option>
+                  
+                    <option value="425">
+                      Legoland Parks
+                    </option>
+                  
+                    <option value="432">
+                      Master Builder Academy
+                    </option>
+                  
+                    <option value="433">
+                      Minitalia
+                    </option>
+                  
+                    <option value="434">
+                      Ninja
+                    </option>
+                  
+                    <option value="435">
+                      Ninjago
+                    </option>
+                  
+                    <option value="437">
+                      Pharaoh&#39;s Quest
+                    </option>
+                  
+                    <option value="438">
+                      Power Functions
+                    </option>
+                  
+                    <option value="439">
+                      Power Miners
+                    </option>
+                  
+                    <option value="440">
+                      Primo
+                    </option>
+                  
+                    <option value="441">
+                      Quatro
+                    </option>
+                  
+                    <option value="442">
+                      Rock Raiders
+                    </option>
+                  
+                    <option value="443">
+                      Service Packs
+                    </option>
+                  
+                    <option value="448">
+                      Fabuland
+                    </option>
+                  
+                    <option value="453">
+                      Technic
+                    </option>
+                  
+                    <option value="456">
+                      Train
+                    </option>
+                  
+                    <option value="458">
+                      Sports
+                    </option>
+                  
+                    <option value="459">
+                      Basketball
+                    </option>
+                  
+                    <option value="460">
+                      Gravity Games
+                    </option>
+                  
+                    <option value="461">
+                      Hockey
+                    </option>
+                  
+                    <option value="462">
+                      Soccer
+                    </option>
+                  
+                    <option value="463">
+                      Spybotics
+                    </option>
+                  
+                    <option value="464">
+                      Time Cruisers
+                    </option>
+                  
+                    <option value="465">
+                      Universal Building Set
+                    </option>
+                  
+                    <option value="467">
+                      Basic
+                    </option>
+                  
+                    <option value="469">
+                      Basic Set
+                    </option>
+                  
+                    <option value="470">
+                      Classic Basic
+                    </option>
+                  
+                    <option value="471">
+                      Ferries
+                    </option>
+                  
+                    <option value="472">
+                      Gears
+                    </option>
+                  
+                    <option value="473">
+                      Supplemental
+                    </option>
+                  
+                    <option value="474">
+                      Vikings
+                    </option>
+                  
+                    <option value="475">
+                      Western
+                    </option>
+                  
+                    <option value="478">
+                      X-Pod
+                    </option>
+                  
+                    <option value="480">
+                      Znap
+                    </option>
+                  
+                    <option value="481">
+                      Dino
+                    </option>
+                  
+                    <option value="494">
+                      Friends
+                    </option>
+                  
+                    <option value="497">
+                      Books
+                    </option>
+                  
+                    <option value="498">
+                      Technic
+                    </option>
+                  
+                    <option value="500">
+                      Clikits
+                    </option>
+                  
+                    <option value="501">
+                      Gear
+                    </option>
+                  
+                    <option value="502">
+                      Games
+                    </option>
+                  
+                    <option value="503">
+                      Key Chain
+                    </option>
+                  
+                    <option value="504">
+                      Duplo
+                    </option>
+                  
+                    <option value="505">
+                      Basic Set
+                    </option>
+                  
+                    <option value="506">
+                      Cars
+                    </option>
+                  
+                    <option value="507">
+                      Educational and Dacta
+                    </option>
+                  
+                    <option value="509">
+                      Adventurers
+                    </option>
+                  
+                    <option value="510">
+                      Boat
+                    </option>
+                  
+                    <option value="511">
+                      Building Set with People
+                    </option>
+                  
+                    <option value="512">
+                      Castle
+                    </option>
+                  
+                    <option value="513">
+                      Classic
+                    </option>
+                  
+                    <option value="514">
+                      Creator
+                    </option>
+                  
+                    <option value="515">
+                      Dinosaurs
+                    </option>
+                  
+                    <option value="516">
+                      Duplo and Explore
+                    </option>
+                  
+                    <option value="517">
+                      Learning
+                    </option>
+                  
+                    <option value="518">
+                      Mindstorms
+                    </option>
+                  
+                    <option value="519">
+                      NXT
+                    </option>
+                  
+                    <option value="520">
+                      RCX
+                    </option>
+                  
+                    <option value="521">
+                      WeDo
+                    </option>
+                  
+                    <option value="523">
+                      Samsonite
+                    </option>
+                  
+                    <option value="524">
+                      Service Packs
+                    </option>
+                  
+                    <option value="525">
+                      Technic
+                    </option>
+                  
+                    <option value="526">
+                      Soft Bricks
+                    </option>
+                  
+                    <option value="527">
+                      Space
+                    </option>
+                  
+                    <option value="528">
+                      Supplemental
+                    </option>
+                  
+                    <option value="529">
+                      Technic
+                    </option>
+                  
+                    <option value="530">
+                      Control Lab
+                    </option>
+                  
+                    <option value="531">
+                      eLAB
+                    </option>
+                  
+                    <option value="532">
+                      Supplemental
+                    </option>
+                  
+                    <option value="533">
+                      Town
+                    </option>
+                  
+                    <option value="534">
+                      Universal Building Set
+                    </option>
+                  
+                    <option value="535">
+                      Collectible Minifigures
+                    </option>
+                  
+                    <option value="536">
+                      Series 1 Minifigures
+                    </option>
+                  
+                    <option value="537">
+                      Series 2 Minifigures
+                    </option>
+                  
+                    <option value="538">
+                      Series 3 Minifigures
+                    </option>
+                  
+                    <option value="539">
+                      Series 4 Minifigures
+                    </option>
+                  
+                    <option value="540">
+                      Series 5 Minifigures
+                    </option>
+                  
+                    <option value="541">
+                      Series 6 Minifigures
+                    </option>
+                  
+                    <option value="542">
+                      Series 7 Minifigures
+                    </option>
+                  
+                    <option value="543">
+                      Series 8 Minifigures
+                    </option>
+                  
+                    <option value="544">
+                      Series 9 Minifigures
+                    </option>
+                  
+                    <option value="545">
+                      Series 10 Minifigures
+                    </option>
+                  
+                    <option value="546">
+                      Team GB
+                    </option>
+                  
+                    <option value="547">
+                      Series 11 Minifigures
+                    </option>
+                  
+                    <option value="548">
+                      Series 12 Minifigures
+                    </option>
+                  
+                    <option value="549">
+                      The LEGO Movie
+                    </option>
+                  
+                    <option value="550">
+                      The Simpsons Series 1
+                    </option>
+                  
+                    <option value="551">
+                      Series 13 Minifigures
+                    </option>
+                  
+                    <option value="552">
+                      Series 14 Minifigures
+                    </option>
+                  
+                    <option value="553">
+                      The Simpsons Series 2
+                    </option>
+                  
+                    <option value="554">
+                      Series 15 Minifigures
+                    </option>
+                  
+                    <option value="555">
+                      Disney Series 1
+                    </option>
+                  
+                    <option value="556">
+                      Series 16 Minifigures
+                    </option>
+                  
+                    <option value="557">
+                      DFB Minifigures
+                    </option>
+                  
+                    <option value="558">
+                      Monster Fighters
+                    </option>
+                  
+                    <option value="559">
+                      Value Packs
+                    </option>
+                  
+                    <option value="560">
+                      Universe
+                    </option>
+                  
+                    <option value="561">
+                      The Hobbit and Lord of the Rings
+                    </option>
+                  
+                    <option value="562">
+                      The Hobbit
+                    </option>
+                  
+                    <option value="566">
+                      The Lord of the Rings
+                    </option>
+                  
+                    <option value="570">
+                      Teenage Mutant Ninja Turtles
+                    </option>
+                  
+                    <option value="571">
+                      Legends of Chima
+                    </option>
+                  
+                    <option value="572">
+                      Speedorz
+                    </option>
+                  
+                    <option value="573">
+                      Constraction
+                    </option>
+                  
+                    <option value="575">
+                      The Lone Ranger
+                    </option>
+                  
+                    <option value="576">
+                      LEGO Ideas and CUUSOO
+                    </option>
+                  
+                    <option value="577">
+                      Minecraft
+                    </option>
+                  
+                    <option value="578">
+                      The LEGO Movie
+                    </option>
+                  
+                    <option value="579">
+                      Disney Princess
+                    </option>
+                  
+                    <option value="580">
+                      Mixels
+                    </option>
+                  
+                    <option value="590">
+                      Fusion
+                    </option>
+                  
+                    <option value="591">
+                      Juniors
+                    </option>
+                  
+                    <option value="592">
+                      DC Comics Super Heroes
+                    </option>
+                  
+                    <option value="593">
+                      Disney Princess
+                    </option>
+                  
+                    <option value="595">
+                      Friends
+                    </option>
+                  
+                    <option value="596">
+                      Marvel Super Heroes
+                    </option>
+                  
+                    <option value="597">
+                      Ninjago
+                    </option>
+                  
+                    <option value="598">
+                      Promotional
+                    </option>
+                  
+                    <option value="599">
+                      LEGO Exclusive
+                    </option>
+                  
+                    <option value="600">
+                      Elves
+                    </option>
+                  
+                    <option value="601">
+                      Speed Champions
+                    </option>
+                  
+                    <option value="602">
+                      Jurassic World
+                    </option>
+                  
+                    <option value="603">
+                      Scooby-Doo
+                    </option>
+                  
+                    <option value="604">
+                      Dimensions
+                    </option>
+                  
+                    <option value="605">
+                      Nexo Knights
+                    </option>
+                  
+                    <option value="606">
+                      Angry Birds
+                    </option>
+                  
+                    <option value="607">
+                      Ghostbusters
+                    </option>
+                  
+                    <option value="608">
+                      Disney
+                    </option>
+                  
+                    <option value="609">
+                      The LEGO Batman Movie Series 1
+                    </option>
+                  
+                    <option value="610">
+                      Brickheadz
+                    </option>
+                  
+                    <option value="611">
+                      Series 17 Minifigures
+                    </option>
+                  
+                    <option value="614">
+                      Jungle
+                    </option>
+                  
+                    <option value="615">
+                      Cars
+                    </option>
+                  
+                    <option value="616">
+                      The LEGO Ninjago Movie
+                    </option>
+                  
+                    <option value="617">
+                      DC Super Hero Girls
+                    </option>
+                  
+                    <option value="618">
+                      The LEGO Ninjago Movie
+                    </option>
+                  
+                    <option value="619">
+                      Cities of Wonders
+                    </option>
+                  
+                    <option value="620">
+                      Jurassic World: Fallen Kingdom
+                    </option>
+                  
+                    <option value="621">
+                      Classic
+                    </option>
+                  
+                    <option value="622">
+                      Series 18 Minifigures
+                    </option>
+                  
+                    <option value="625">
+                      Unikitty!
+                    </option>
+                  
+                    <option value="626">
+                      Bob the Builder
+                    </option>
+                  
+                    <option value="627">
+                      Disney Planes
+                    </option>
+                  
+                    <option value="628">
+                      Dora the Explorer
+                    </option>
+                  
+                    <option value="629">
+                      Miles From Tomorrowland
+                    </option>
+                  
+                    <option value="630">
+                      Spiderman
+                    </option>
+                  
+                    <option value="631">
+                      Thomas &amp; Friends
+                    </option>
+                  
+                    <option value="632">
+                      Town
+                    </option>
+                  
+                    <option value="633">
+                      Toy Story
+                    </option>
+                  
+                    <option value="634">
+                      Trains
+                    </option>
+                  
+                    <option value="635">
+                      Winnie the Pooh
+                    </option>
+                  
+                    <option value="636">
+                      My Town
+                    </option>
+                  
+                    <option value="638">
+                      Jake and the Never Land Pirates
+                    </option>
+                  
+                    <option value="639">
+                      Sofia the First
+                    </option>
+                  
+                    <option value="640">
+                      Disney Princess
+                    </option>
+                  
+                    <option value="641">
+                      Disney&#39;s Mickey Mouse
+                    </option>
+                  
+                    <option value="646">
+                      Xtra
+                    </option>
+                  
+                    <option value="647">
+                      Castle
+                    </option>
+                  
+                    <option value="648">
+                      Doc McStuffins
+                    </option>
+                  
+                    <option value="650">
+                      Legoville
+                    </option>
+                  
+                    <option value="651">
+                      Pirates
+                    </option>
+                  
+                    <option value="652">
+                      Playhouse
+                    </option>
+                  
+                    <option value="653">
+                      DC Comics
+                    </option>
+                  
+                    <option value="654">
+                      The Powerpuff Girls
+                    </option>
+                  
+                    <option value="655">
+                      Powered Up
+                    </option>
+                  
+                    <option value="656">
+                      Harry Potter and Fantastic Beasts Series 1
+                    </option>
+                  
+                    <option value="657">
+                      Action Wheelers
+                    </option>
+                  
+                    <option value="658">
+                      Dino
+                    </option>
+                  
+                    <option value="659">
+                      Dolls
+                    </option>
+                  
+                    <option value="660">
+                      Little Forest Friends
+                    </option>
+                  
+                    <option value="661">
+                      Little Robots
+                    </option>
+                  
+                    <option value="662">
+                      Princess Castle
+                    </option>
+                  
+                    <option value="663">
+                      Rattles
+                    </option>
+                  
+                    <option value="664">
+                      Toolo
+                    </option>
+                  
+                    <option value="665">
+                      Western
+                    </option>
+                  
+                    <option value="666">
+                      Zooters
+                    </option>
+                  
+                    <option value="667">
+                      Fantastic Beasts
+                    </option>
+                  
+                    <option value="668">
+                      Scala
+                    </option>
+                  
+                    <option value="669">
+                      Overwatch
+                    </option>
+                  
+                    <option value="670">
+                      The LEGO Movie II
+                    </option>
+                  
+                    <option value="671">
+                      Forma
+                    </option>
+                  
+                    <option value="672">
+                      Creator 3-in-1
+                    </option>
+                  
+                    <option value="673">
+                      Creator Expert
+                    </option>
+                  
+                    <option value="674">
+                      Early Creator
+                    </option>
+                  
+                    <option value="675">
+                      The LEGO Movie II
+                    </option>
+                  
+                    <option value="676">
+                      Hidden Side
+                    </option>
+                  
+                    <option value="677">
+                      Disney Series 2
+                    </option>
+                  
+                    <option value="679">
+                      Mars Exploration
+                    </option>
+                  
+                    <option value="680">
+                      Stranger Things
+                    </option>
+                  
+                    <option value="681">
+                      Series 19 Minifigures
+                    </option>
+                  
+                    <option value="682">
+                      Trolls: World Tour
+                    </option>
+                  
+                    <option value="683">
+                      LEGO Originals
+                    </option>
+                  
+                    <option value="684">
+                      DC Super Heroes
+                    </option>
+                  
+                    <option value="685">
+                      Galidor
+                    </option>
+                  
+                    <option value="686">
+                      Chinese Traditional Festivals
+                    </option>
+                  
+                    <option value="687">
+                      Frozen
+                    </option>
+                  
+                    <option value="688">
+                      DOTS
+                    </option>
+                  
+                    <option value="689">
+                      Minions
+                    </option>
+                  
+                    <option value="690">
+                      Super Mario
+                    </option>
+                  
+                    <option value="691">
+                      Harry Potter and Fantastic Beasts Series 2
+                    </option>
+                  
+                    <option value="692">
+                      Series 20 Minifigures
+                    </option>
+                  
+                    <option value="693">
+                      Monkie Kid
+                    </option>
+                  
+                    <option value="694">
+                      Brick Sketches
+                    </option>
+                  
+                    <option value="695">
+                      Super Heroes DC
+                    </option>
+                  
+                    <option value="696">
+                      Super Heroes Marvel
+                    </option>
+                  
+                    <option value="697">
+                      Batman
+                    </option>
+                  
+                    <option value="698">
+                      UCS
+                    </option>
+                  
+                    <option value="699">
+                      Constraction
+                    </option>
+                  
+                    <option value="700">
+                      Justice League
+                    </option>
+                  
+                    <option value="701">
+                      Superman
+                    </option>
+                  
+                    <option value="702">
+                      Avengers
+                    </option>
+                  
+                    <option value="703">
+                      Constraction
+                    </option>
+                  
+                    <option value="704">
+                      Guardians of the Galaxy
+                    </option>
+                  
+                    <option value="705">
+                      Iron Man
+                    </option>
+                  
+                    <option value="706">
+                      Spider-Man
+                    </option>
+                  
+                    <option value="707">
+                      X-Men
+                    </option>
+                  
+                    <option value="708">
+                      The LEGO Batman Movie
+                    </option>
+                  
+                    <option value="709">
+                      LEGO Art
+                    </option>
+                  
+                    <option value="710">
+                      Harry Potter
+                    </option>
+                  
+                    <option value="711">
+                      The LEGO Batman Movie Series 2
+                    </option>
+                  
+                    <option value="712">
+                      Series 21 Minifigures
+                    </option>
+                  
+                    <option value="713">
+                      VIDIYO
+                    </option>
+                  
+                    <option value="714">
+                      Looney Tunes
+                    </option>
+                  
+                    <option value="715">
+                      Marvel Series 1
+                    </option>
+                  
+                    <option value="716">
+                      Modulex
+                    </option>
+                  
+                    <option value="717">
+                      Speed Racer
+                    </option>
+                  
+                    <option value="718">
+                      Series 22 Minifigures
+                    </option>
+                  
+                    <option value="719">
+                      BrickLink Designer Program
+                    </option>
+                  
+                    <option value="720">
+                      The Muppets
+                    </option>
+                  
+                    <option value="721">
+                      Icons
+                    </option>
+                  
+                    <option value="722">
+                      Jurassic World
+                    </option>
+                  
+                    <option value="724">
+                      Avatar
+                    </option>
+                  
+                    <option value="725">
+                      Series 23 Minifigures
+                    </option>
+                  
+                    <option value="728">
+                      McDonalds
+                    </option>
+                  
+                    <option value="729">
+                      Airlines
+                    </option>
+                  
+                    <option value="730">
+                      Audio and Visual Media
+                    </option>
+                  
+                    <option value="731">
+                      Bag and Luggage Tags
+                    </option>
+                  
+                    <option value="732">
+                      Clocks and Watches
+                    </option>
+                  
+                    <option value="733">
+                      Houseware
+                    </option>
+                  
+                    <option value="734">
+                      Magnets
+                    </option>
+                  
+                    <option value="735">
+                      Plush Toys
+                    </option>
+                  
+                    <option value="736">
+                      Posters and Art Prints
+                    </option>
+                  
+                    <option value="737">
+                      Role Play Toys and Costumes
+                    </option>
+                  
+                    <option value="738">
+                      Seasonal
+                    </option>
+                  
+                    <option value="739">
+                      Stationery and Office Supplies
+                    </option>
+                  
+                    <option value="740">
+                      Storage
+                    </option>
+                  
+                    <option value="741">
+                      Tabletop Games and Puzzles
+                    </option>
+                  
+                    <option value="742">
+                      Video Games and Accessories
+                    </option>
+                  
+                    <option value="743">
+                      Series 24 Minifigures
+                    </option>
+                  
+                    <option value="744">
+                      Stuntz
+                    </option>
+                  
+                    <option value="745">
+                      Disney 100
+                    </option>
+                  
+                    <option value="746">
+                      Database Sets
+                    </option>
+                  
+                    <option value="747">
+                      Sonic The Hedgehog
+                    </option>
+                  
+                    <option value="748">
+                      Gabby‚Äôs Dollhouse
+                    </option>
+                  
+                    <option value="749">
+                      Dreamzzz
+                    </option>
+                  
+                    <option value="750">
+                      Marvel Series 2
+                    </option>
+                  
+                </select>
+              </div>
+  
+              <div class="mb-6">
+                <label for="set_num" class="block text-gray-700 font-medium">Set Num</label>
+                <input type="text" id="set_num" name="set_num" required
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300 cursor-not-allowed" readonly  value="<%= set.set_num %>">
+              </div>
+  
+            </div>
+          </div>
+  
+          <div class="mt-6">
+            <button type="submit" class="btn btn-primary">Update Set</button>
+            <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error">Delete Set</a>
+        </div>
+   
+        </form>
+      </div>
+</body>
+
+</html>
